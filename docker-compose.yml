@@ -30,7 +30,7 @@ volumes:
     -db_data: 
 
 networks:
-    appnetwork:     
+    -appnetwork:     
       
       
     
