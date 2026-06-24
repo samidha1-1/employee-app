@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+
+version: "3.9"
+
+services: 
+  app:
+    build: . 
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+        MYSQL_HOST: db 
+        MYSQL_DATABASE: employee_db
+        MYSQL_USER: root 
+        MYSQL_PASSWORD: root
+
+  db:  
+    image: "mysql:5.7"
+    restart: always
+    environment:
+      MYSQL_HOST: db 
+      MYSQL_DATABASE: employee_db
+      MYSQL_USER: root 
+      MYSQL_PASSWORD: root 
+    ports:
+      - "3306:3306"
+
+
+volumes:
+    -db_data: 
+
+networks:
+    appnetwork:     
+      
+      
+    
